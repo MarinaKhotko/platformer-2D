@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
-const stylesHandler = 'npm install copy-webpack-plugin --save-devr';
+const stylesHandler = 'style-loader';
 
 const config = {
   entry: './src/index.ts',
