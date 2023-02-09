@@ -1,8 +1,8 @@
-import { wasp } from './enemies';
+import { groundEnemy, player } from './enemies';
 
 export default class Game {
   public canvas = document.querySelector('canvas') as HTMLCanvasElement;
-  public ctx = this.canvas.getContext('2d')!;
+  public ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
 
   public constructor() {
     this.canvas.width = window.innerWidth;
@@ -12,13 +12,13 @@ export default class Game {
       this.canvas.height = window.innerHeight;
     });
   }
-  public tick() {
+
+  public update(deltaTime: number): void {
     this.ctx.fillStyle = 'gray';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // this.ctx.fillStyle = 'red';
-    // this.ctx.fillRect(0, 0, 30, 30);
-    wasp.update();
+    player.update();
+    groundEnemy.update(5);
   }
 }
 

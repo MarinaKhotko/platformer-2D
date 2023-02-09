@@ -1,36 +1,42 @@
 import { game } from '../components/game-canvas';
-import { Vector } from './interfaces';
+import type { Vector } from './interfaces';
 
 export class PrototypeCharacters {
   protected position: Vector;
   protected sizeFinal: Vector;
-  protected sizeToGetOnePosition: Vector;
-  protected velocity: Vector;
+  protected spriteSize: Vector;
   protected characterImg = new Image();
   protected ImgPath: string;
-  protected frames: number = 0;
+  protected frames: Vector = { x: 0, y: 0 };
+  protected velocityX: number;
+  protected velocityY: number;
 
   public constructor(
     position: Vector,
     sizeFinal: Vector,
-    sizeToGetOnePosition: Vector,
-    velocity: Vector,
+    spriteSize: Vector,
     path: string,
+    frames: Vector,
+    velocityX: number,
+    velocityY: number,
   ) {
     this.position = position;
     this.sizeFinal = sizeFinal;
-    this.sizeToGetOnePosition = sizeToGetOnePosition;
-    this.velocity = velocity;
+    this.spriteSize = spriteSize;
     this.ImgPath = path;
-  }
-  draw() {
     this.characterImg.src = this.ImgPath;
+    this.frames = frames;
+    this.velocityX = velocityX;
+    this.velocityY = velocityY;
+  }
+
+  draw(): void {
     game.ctx.drawImage(
       this.characterImg,
-      this.sizeToGetOnePosition.x * this.frames,
-      0,
-      this.sizeToGetOnePosition.x,
-      this.sizeToGetOnePosition.y,
+      this.spriteSize.x * this.frames.x,
+      this.spriteSize.y * this.frames.y,
+      this.spriteSize.x,
+      this.spriteSize.y,
       this.position.x,
       this.position.y,
       this.sizeFinal.x,
@@ -39,28 +45,9 @@ export class PrototypeCharacters {
   }
 }
 
-export class Enemy extends PrototypeCharacters {
-  constructor(
-    position: Vector,
-    sizeFinal: Vector,
-    sizeToGetOnePosition: Vector,
-    velocity: Vector,
-    path: string,
-  ) {
-    super(position, sizeFinal, sizeToGetOnePosition, velocity, path);
-  }
-  update() {
-    this.frames++;
-    if (this.frames > 3) {
-      this.frames = 0;
-    }
+export class Player extends PrototypeCharacters {
+  update(): void {
+    this.position.x += this.velocityX;
     this.draw();
-    this.position.x += this.velocity.x;
-    if (this.position.y < 130) {
-      this.position.y += this.velocity.y;
-    }
-    if (this.position.y > 130) {
-      this.position.y -= this.velocity.y;
-    }
   }
 }
