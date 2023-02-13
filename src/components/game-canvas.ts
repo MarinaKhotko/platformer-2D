@@ -1,6 +1,6 @@
 export default class Game {
-  private canvas = document.querySelector('canvas') as HTMLCanvasElement;
-  private ctx = this.canvas.getContext('2d')!;
+  public canvas = document.querySelector('canvas') as HTMLCanvasElement;
+  public ctx: CanvasRenderingContext2D = this.canvas.getContext('2d')!;
 
   public constructor() {
     this.canvas.width = window.innerWidth;
@@ -10,11 +10,10 @@ export default class Game {
       this.canvas.height = window.innerHeight;
     });
   }
-  public tick() {
-    this.ctx.fillStyle = 'gray';
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.fillStyle = 'red';
-    this.ctx.fillRect(0, 0, 30, 30);
+  public tick (): void {
+    this.ctx.fillStyle = 'gray';
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);  
   }
 }
+export const game = new Game();
