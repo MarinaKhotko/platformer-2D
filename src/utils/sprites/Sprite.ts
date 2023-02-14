@@ -1,38 +1,38 @@
-import { game } from '../components/game-canvas';
-import type { Vector } from './interfaces';
+import { game } from '../../components/game-canvas';
+import type { Vector } from '../interfaces';
 
-export class PrototypeCharacters {
+export class Sprite {
   protected position: Vector;
   protected sizeFinal: Vector;
   protected spriteSize: Vector;
-  protected characterImg = new Image();
+  protected image = new Image();
   protected ImgPath: string;
-  protected frames: Vector = { x: 0, y: 0 };
-  protected velocityX: number;
-  protected velocityY: number;
+  protected frames: Vector;
+  protected loaded: boolean;
 
   public constructor(
     position: Vector,
     sizeFinal: Vector,
     spriteSize: Vector,
     path: string,
-    frames: Vector,
-    velocityX: number,
-    velocityY: number,
+    frames: Vector = { x: 0, y: 0 },
   ) {
     this.position = position;
     this.sizeFinal = sizeFinal;
     this.spriteSize = spriteSize;
     this.ImgPath = path;
-    this.characterImg.src = this.ImgPath;
+    this.image.src = this.ImgPath;
+    this.image.onload = (): void => {
+      this.loaded = true;
+    };
     this.frames = frames;
-    this.velocityX = velocityX;
-    this.velocityY = velocityY;
+    this.loaded = false;
   }
 
   draw(): void {
+    if (!this.loaded) return;
     game.ctx.drawImage(
-      this.characterImg,
+      this.image,
       this.spriteSize.x * this.frames.x,
       this.spriteSize.y * this.frames.y,
       this.spriteSize.x,
@@ -42,12 +42,5 @@ export class PrototypeCharacters {
       this.sizeFinal.x,
       this.sizeFinal.y,
     );
-  }
-}
-
-export class Player extends PrototypeCharacters {
-  update(): void {
-    this.position.x += this.velocityX;
-    this.draw();
   }
 }

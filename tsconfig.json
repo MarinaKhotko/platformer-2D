@@ -100,6 +100,16 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "files": ["src/index.ts", "src/components/enemies.ts"],
+  "files": [
+    "src/index.ts",
+    "src/utils/sprites/moving/characters/enemies/FlyingEnemy.ts",
+    "src/utils/sprites/Sprite.ts",
+    "src/components/START-GAME/START-page.ts",
+    "src/utils/sprites/rotating/milling-cutter.ts",
+    "src/utils/sprites/moving/characters/Character.ts",
+    "src/utils/sprites/rotating/rotating-sprite.ts",
+    "src/utils/sprites/moving/characters/enemies/Enemy.ts",
+    "src/utils/sprites/moving/characters/enemies/GroundEnemy.ts"
+  ],
   "include": ["src", "index.d.ts"]
 }
