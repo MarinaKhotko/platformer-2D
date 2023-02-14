@@ -1,22 +1,27 @@
-import { game } from '../../components/game-canvas';
+import type Game from '../../components/game-canvas';
 import type { Vector } from '../interfaces';
 
 export class Sprite {
-  protected position: Vector;
+  public position: Vector;
   protected sizeFinal: Vector;
   protected spriteSize: Vector;
   protected image = new Image();
   protected ImgPath: string;
   protected frames: Vector;
   protected loaded: boolean;
+  ctx: CanvasRenderingContext2D;
+  game: Game;
 
   public constructor(
+    game: Game,
     position: Vector,
     sizeFinal: Vector,
     spriteSize: Vector,
     path: string,
     frames: Vector = { x: 0, y: 0 },
+    ctx: CanvasRenderingContext2D = game.ctx,
   ) {
+    this.game = game;
     this.position = position;
     this.sizeFinal = sizeFinal;
     this.spriteSize = spriteSize;
@@ -27,11 +32,12 @@ export class Sprite {
     };
     this.frames = frames;
     this.loaded = false;
+    this.ctx = ctx;
   }
 
   draw(): void {
     if (!this.loaded) return;
-    game.ctx.drawImage(
+    this.ctx.drawImage(
       this.image,
       this.spriteSize.x * this.frames.x,
       this.spriteSize.y * this.frames.y,

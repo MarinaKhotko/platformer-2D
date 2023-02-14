@@ -3,7 +3,7 @@ import './style.sass';
 
 const loop = (): void => {
   requestAnimationFrame(loop);
-  game.update(30);
+  game.update();
 };
 
 requestAnimationFrame(loop);

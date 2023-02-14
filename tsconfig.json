@@ -105,11 +105,13 @@
     "src/utils/sprites/moving/characters/enemies/FlyingEnemy.ts",
     "src/utils/sprites/Sprite.ts",
     "src/components/START-GAME/START-page.ts",
-    "src/utils/sprites/rotating/milling-cutter.ts",
     "src/utils/sprites/moving/characters/Character.ts",
-    "src/utils/sprites/rotating/rotating-sprite.ts",
+    "src/utils/sprites/moving/rotating/rotating-sprite.ts",
     "src/utils/sprites/moving/characters/enemies/Enemy.ts",
-    "src/utils/sprites/moving/characters/enemies/GroundEnemy.ts"
+    "src/utils/sprites/moving/characters/enemies/GroundEnemy.ts",
+    "./src/components/START-GAME/styleNameGame.ts",
+    "./src/components/START-GAME/millingCuttersSTART.ts",
+    "src/utils/common-classes/GenetationEnemies.ts"
   ],
   "include": ["src", "index.d.ts"]
 }

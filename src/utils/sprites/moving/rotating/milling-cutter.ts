@@ -1,4 +1,5 @@
-import type { Vector } from '../../interfaces';
+import type Game from '../../../../components/game-canvas';
+import type { Vector } from '../../../interfaces';
 import { RotatingSprite } from './rotating-sprite';
 
 export class MillingCutter extends RotatingSprite {
@@ -7,6 +8,7 @@ export class MillingCutter extends RotatingSprite {
   protected rotationAxis: Vector;
 
   public constructor(
+    game: Game,
     sizeFinal: Vector,
     rotationAxis: Vector,
     spriteSize: Vector = { x: 594, y: 628 },
@@ -14,7 +16,15 @@ export class MillingCutter extends RotatingSprite {
     position: Vector = { x: -sizeFinal.x / 2, y: -sizeFinal.y / 2 },
     path: string = '../../assets/фреза.png',
   ) {
-    super(sizeFinal, spriteSize, rotationSpeed, rotationAxis, position, path);
+    super(
+      game,
+      sizeFinal,
+      spriteSize,
+      rotationSpeed,
+      rotationAxis,
+      position,
+      path,
+    );
     this.rotationSpeed = rotationSpeed;
     this.rotationAxis = rotationAxis;
   }

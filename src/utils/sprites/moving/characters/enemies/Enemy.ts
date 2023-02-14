@@ -1,5 +1,6 @@
 import { MovingSprite } from '../Character';
 import type { Vector } from '../../../../interfaces';
+import type Game from '../../../../../components/game-canvas';
 
 export class Enemy extends MovingSprite {
   protected fps = 30;
@@ -9,8 +10,10 @@ export class Enemy extends MovingSprite {
   protected maxFrame: number;
   protected distanceMovingMin: number | undefined;
   protected distanceMovingMax: number | undefined;
+  public markedToDeletion: boolean;
 
   constructor(
+    game: Game,
     position: Vector,
     sizeFinal: Vector,
     spriteSize: Vector,
@@ -22,10 +25,20 @@ export class Enemy extends MovingSprite {
     distanceMovingMin?: number,
     distanceMovingMax?: number,
   ) {
-    super(position, sizeFinal, spriteSize, path, frames, velocityX, velocityY);
+    super(
+      game,
+      position,
+      sizeFinal,
+      spriteSize,
+      path,
+      frames,
+      velocityX,
+      velocityY,
+    );
     this.maxFrame = maxFrame;
     this.distanceMovingMin = distanceMovingMin;
     this.distanceMovingMax = distanceMovingMax;
+    this.markedToDeletion = false;
   }
 
   update(deltaTime: number): void {
@@ -33,5 +46,7 @@ export class Enemy extends MovingSprite {
       this.frameTimer = 0;
       this.frames.x < this.maxFrame ? this.frames.x++ : (this.frames.x = 0);
     } else this.frameTimer += deltaTime;
+
+    if (this.position.x < 0 - this.sizeFinal.x) this.markedToDeletion = true;
   }
 }

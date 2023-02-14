@@ -1,3 +1,4 @@
+import type Game from '../../../../components/game-canvas';
 import type { Vector } from '../../../interfaces';
 import { Sprite } from '../../Sprite';
 
@@ -6,6 +7,7 @@ export class MovingSprite extends Sprite {
   protected velocityY: number;
 
   public constructor(
+    game: Game,
     position: Vector,
     sizeFinal: Vector,
     spriteSize: Vector,
@@ -14,7 +16,7 @@ export class MovingSprite extends Sprite {
     velocityX: number,
     velocityY: number,
   ) {
-    super(position, sizeFinal, spriteSize, path, frames);
+    super(game, position, sizeFinal, spriteSize, path, frames);
     this.velocityX = velocityX;
     this.velocityY = velocityY;
   }
