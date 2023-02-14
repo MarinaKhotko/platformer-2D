@@ -1,9 +1,9 @@
+import { game } from './components/game-canvas';
 import './style.sass';
-import Game from './components/game-canvas';
 
-const game = new Game();
-const loop = () => {
+const loop = (): void => {
   requestAnimationFrame(loop);
-  game.tick();
+  game.update();
 };
+
 requestAnimationFrame(loop);
