@@ -18,7 +18,7 @@ export class StartPage {
       { x: 0, y: 0 },
       { x: window.innerWidth, y: window.innerHeight },
       { x: 2540, y: 1440 },
-      '../../assets/background_start.png',
+      './../assets/background_start.png',
     );
 
     this.startGameButton = new Button(
