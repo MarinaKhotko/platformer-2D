@@ -23,8 +23,8 @@ export class StartPage {
 
     this.startGameButton = new Button(
       { x: window.innerWidth * 0.15, y: window.innerHeight * 0.4 },
-      { x: 400, y: 120 },
-      100,
+      { x: 220, y: 80 },
+      60,
       'PLAY',
       'white',
       'black',
@@ -33,7 +33,7 @@ export class StartPage {
     this.platform1 = new Platform(
       game,
       { x: 200, y: -500 },
-      { x: 778, y: 111 },
+      { x: 578, y: 111 },
       48,
     );
 
