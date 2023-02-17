@@ -3,7 +3,7 @@ import type { Vector } from '../interfaces';
 
 export class Sprite {
   public position: Vector;
-  protected sizeFinal: Vector;
+  public sizeFinal: Vector;
   protected spriteSize: Vector;
   protected image = new Image();
   protected ImgPath: string;

@@ -83,8 +83,6 @@ export class Spider extends GroundEnemy {
     super.update(deltaTime);
 
     if (this.position.y > this.distanceMoving) this.velocityY *= -1;
-    console.log(this.position.y);
-
     this.draw();
   }
 }

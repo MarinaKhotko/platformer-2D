@@ -19,6 +19,7 @@ export class StaticSprite extends Sprite {
   }
 
   render(game: Game): void {
+    this.draw();
     game.ctx.save();
     game.ctx.translate(0, 0);
     game.ctx.rotate((this.rotateAngle * Math.PI) / 180);

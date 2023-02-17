@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Level1\": () => (/* binding */ Level1)\n/* harmony export */ });\n/* harmony import */ var _utils_common_classes_GenetationEnemies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/common-classes/GenetationEnemies */ \"./src/utils/common-classes/GenetationEnemies.ts\");\n\r\nclass Level1 {\r\n    constructor(proto) {\r\n        this.game = proto;\r\n        this.generationEnemies = new _utils_common_classes_GenetationEnemies__WEBPACK_IMPORTED_MODULE_0__.GenetationEnemies();\r\n    }\r\n    draw() {\r\n        this.game.ctx.fillStyle = 'gray';\r\n        this.generationEnemies.draw(this.game);\r\n    }\r\n    update(deltaTime) {\r\n        this.game.ctx.fillStyle = 'gray';\r\n        this.game.ctx.save();\r\n        this.game.ctx.fillStyle = 'black';\r\n        this.game.ctx.fillRect(0, this.game.canvas.height * 0.8, this.game.canvas.width, this.game.canvas.height * 0.2);\r\n        this.game.ctx.restore();\r\n        this.generationEnemies.update(this.game, 10);\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/Level-1/level-1.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Level1\": () => (/* binding */ Level1)\n/* harmony export */ });\n/* harmony import */ var _utils_common_classes_GenetationEnemies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/common-classes/GenetationEnemies */ \"./src/utils/common-classes/GenetationEnemies.ts\");\n/* harmony import */ var _backgrounds_LEVELS_background__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../backgrounds-LEVELS/background */ \"./src/components/backgrounds-LEVELS/background.ts\");\n/* harmony import */ var _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/sprites/static/static-sprite */ \"./src/utils/sprites/static/static-sprite.ts\");\n\r\n\r\n\r\nclass Level1 {\r\n    constructor(proto) {\r\n        this.game = proto;\r\n        this.generationEnemies = new _utils_common_classes_GenetationEnemies__WEBPACK_IMPORTED_MODULE_0__.GenetationEnemies();\r\n        this.background = new _backgrounds_LEVELS_background__WEBPACK_IMPORTED_MODULE_1__.BackgroundParallax(this.game);\r\n        this.platforms = [\r\n            new _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_2__.Platform(this.game, { x: 500, y: 500 }, { x: 300, y: 60 }, 90),\r\n            new _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_2__.Platform(this.game, { x: 2800, y: 700 }, { x: 300, y: 60 }, 90),\r\n        ];\r\n    }\r\n    draw() {\r\n        this.generationEnemies.draw(this.game);\r\n    }\r\n    update(deltaTime) {\r\n        this.background.animateParallax();\r\n        this.generationEnemies.update(this.game, 10);\r\n        this.platforms.forEach((el) => {\r\n            el.render(this.game);\r\n        });\r\n    }\r\n}\r\n// this.game.ctx.save();\r\n// this.game.ctx.fillStyle = 'black';\r\n// this.game.ctx.fillRect(\r\n//   0,\r\n//   this.game.canvas.height * 0.8,\r\n//   this.game.canvas.width,\r\n//   this.game.canvas.height * 0.2,\r\n// );\r\n// this.game.ctx.restore();\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/Level-1/level-1.ts?");
 
 /***/ }),
 
@@ -150,13 +150,53 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/backgrounds-LEVELS/AllLayers.ts":
+/*!********************************************************!*\
+  !*** ./src/components/backgrounds-LEVELS/AllLayers.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"AllLayers\": () => (/* binding */ AllLayers)\n/* harmony export */ });\n/* harmony import */ var _Layer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layer */ \"./src/components/backgrounds-LEVELS/Layer.ts\");\n\r\nclass AllLayers {\r\n    constructor(game, layers, speedModifiers) {\r\n        this.game = game;\r\n        this.layers = layers;\r\n        this.speedModifiers = speedModifiers;\r\n    }\r\n    getlayers() {\r\n        const Layers = [];\r\n        for (let i = 0; i < this.layers.length; i++) {\r\n            Layers[i] = new _Layer__WEBPACK_IMPORTED_MODULE_0__.Layer(this.game, this.layers[i], this.speedModifiers[i]);\r\n        }\r\n        return Layers;\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/backgrounds-LEVELS/AllLayers.ts?");
+
+/***/ }),
+
+/***/ "./src/components/backgrounds-LEVELS/Layer.ts":
+/*!****************************************************!*\
+  !*** ./src/components/backgrounds-LEVELS/Layer.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Layer\": () => (/* binding */ Layer)\n/* harmony export */ });\n/* harmony import */ var _background__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./background */ \"./src/components/backgrounds-LEVELS/background.ts\");\n\r\nclass Layer {\r\n    constructor(game, image, speedModifier) {\r\n        this.game = game;\r\n        this.image = image;\r\n        this.speedModifier = speedModifier;\r\n        this.speed = _background__WEBPACK_IMPORTED_MODULE_0__.gameSpeed * this.speedModifier;\r\n        this.width = game.canvas.width;\r\n        this.height = game.canvas.height;\r\n        this.x = 0;\r\n        this.x2 = this.width;\r\n        this.y = 0;\r\n    }\r\n    update() {\r\n        this.speed = _background__WEBPACK_IMPORTED_MODULE_0__.gameSpeed * this.speedModifier;\r\n        if (this.x <= -this.width) {\r\n            this.x = this.width + this.x2 - this.speed;\r\n        }\r\n        if (this.x2 <= -this.width) {\r\n            this.x2 = this.width + this.x - this.speed;\r\n        }\r\n        this.x = Math.floor(this.x - this.speed);\r\n        this.x2 = Math.floor(this.x2 - this.speed);\r\n        this.scroll();\r\n    }\r\n    scroll() {\r\n        this.game.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);\r\n        this.game.ctx.drawImage(this.image, this.x2, this.y, this.width, this.height);\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/backgrounds-LEVELS/Layer.ts?");
+
+/***/ }),
+
+/***/ "./src/components/backgrounds-LEVELS/background.ts":
+/*!*********************************************************!*\
+  !*** ./src/components/backgrounds-LEVELS/background.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"BackgroundParallax\": () => (/* binding */ BackgroundParallax),\n/* harmony export */   \"gameSpeed\": () => (/* binding */ gameSpeed)\n/* harmony export */ });\n/* harmony import */ var _AllLayers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AllLayers */ \"./src/components/backgrounds-LEVELS/AllLayers.ts\");\n/* harmony import */ var _data_img_background_1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data/img-background-1 */ \"./src/components/backgrounds-LEVELS/data/img-background-1.ts\");\n\r\n\r\nconst gameSpeed = 5;\r\nclass BackgroundParallax {\r\n    constructor(game) {\r\n        this.game = game;\r\n        this.allLayers = new _AllLayers__WEBPACK_IMPORTED_MODULE_0__.AllLayers(this.game, _data_img_background_1__WEBPACK_IMPORTED_MODULE_1__.layersL1, _data_img_background_1__WEBPACK_IMPORTED_MODULE_1__.speedModifiersL1);\r\n    }\r\n    animateParallax() {\r\n        this.game.ctx.clearRect(0, 0, this.game.canvas.width, this.game.canvas.height);\r\n        this.allLayers.getlayers().forEach((obj) => {\r\n            obj.update();\r\n            // obj.scroll();\r\n        });\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/backgrounds-LEVELS/background.ts?");
+
+/***/ }),
+
+/***/ "./src/components/backgrounds-LEVELS/data/img-background-1.ts":
+/*!********************************************************************!*\
+  !*** ./src/components/backgrounds-LEVELS/data/img-background-1.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"layersL1\": () => (/* binding */ layersL1),\n/* harmony export */   \"speedModifiersL1\": () => (/* binding */ speedModifiersL1)\n/* harmony export */ });\nconst backgroundLayer1 = new Image();\r\nbackgroundLayer1.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-1.png */ \"./assets/backgrounds/1/layer-1.png\");\r\nconst backgroundLayer2 = new Image();\r\nbackgroundLayer2.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-2.png */ \"./assets/backgrounds/1/layer-2.png\");\r\nconst backgroundLayer3 = new Image();\r\nbackgroundLayer3.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-3.png */ \"./assets/backgrounds/1/layer-3.png\");\r\nconst backgroundLayer4 = new Image();\r\nbackgroundLayer4.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-4.png */ \"./assets/backgrounds/1/layer-4.png\");\r\nconst backgroundLayer5 = new Image();\r\nbackgroundLayer5.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-5.png */ \"./assets/backgrounds/1/layer-5.png\");\r\nconst backgroundLayer6 = new Image();\r\nbackgroundLayer6.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-6.png */ \"./assets/backgrounds/1/layer-6.png\");\r\nconst backgroundLayer7 = new Image();\r\nbackgroundLayer7.src = __webpack_require__(/*! ../../../../assets/backgrounds/1/layer-7.png */ \"./assets/backgrounds/1/layer-7.png\");\r\nconst layersL1 = [\r\n    backgroundLayer1,\r\n    backgroundLayer2,\r\n    backgroundLayer3,\r\n    backgroundLayer4,\r\n    backgroundLayer5,\r\n    backgroundLayer6,\r\n    backgroundLayer7,\r\n];\r\nconst speedModifiersL1 = [0.5, 0.1, 0.2, 0.4, 0.5, 0.5, 0.8];\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/backgrounds-LEVELS/data/img-background-1.ts?");
+
+/***/ }),
+
 /***/ "./src/components/game-canvas.ts":
 /*!***************************************!*\
   !*** ./src/components/game-canvas.ts ***!
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Game),\n/* harmony export */   \"game\": () => (/* binding */ game)\n/* harmony export */ });\n/* harmony import */ var _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/sprites/static/static-sprite */ \"./src/utils/sprites/static/static-sprite.ts\");\n/* harmony import */ var _Level_1_level_1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Level-1/level-1 */ \"./src/components/Level-1/level-1.ts\");\n/* harmony import */ var _START_GAME_START_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./START-GAME/START-page */ \"./src/components/START-GAME/START-page.ts\");\n\r\n\r\n\r\nclass Game {\r\n    constructor() {\r\n        this.canvas = document.querySelector('canvas');\r\n        this.ctx = this.canvas.getContext('2d');\r\n        this.startPage = new _START_GAME_START_page__WEBPACK_IMPORTED_MODULE_2__.StartPage(this);\r\n        this.level1 = new _Level_1_level_1__WEBPACK_IMPORTED_MODULE_1__.Level1(this);\r\n        this.startPageOpened = true;\r\n        this.level1Opened = false;\r\n        this.logo = new _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_0__.Logo(this);\r\n        this.gitHubs = new _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_0__.GitHubs(this);\r\n        this.canvas.width = window.innerWidth;\r\n        this.canvas.height = window.innerHeight;\r\n        window.addEventListener('resize', () => {\r\n            this.canvas.width = window.innerWidth;\r\n            this.canvas.height = window.innerHeight;\r\n        });\r\n        this.startPage.addListener(this);\r\n    }\r\n    update() {\r\n        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);\r\n        if (this.startPageOpened)\r\n            this.startPage.update(this);\r\n        if (this.level1Opened) {\r\n            this.level1.draw();\r\n            this.level1.update(3000);\r\n        }\r\n        this.logo.draw();\r\n        this.gitHubs.draw();\r\n    }\r\n}\r\nconst game = new Game();\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/game-canvas.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Game),\n/* harmony export */   \"game\": () => (/* binding */ game)\n/* harmony export */ });\n/* harmony import */ var _utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/sprites/moving/characters/player/player */ \"./src/utils/sprites/moving/characters/player/player.ts\");\n/* harmony import */ var _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/sprites/static/static-sprite */ \"./src/utils/sprites/static/static-sprite.ts\");\n/* harmony import */ var _Level_1_level_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Level-1/level-1 */ \"./src/components/Level-1/level-1.ts\");\n/* harmony import */ var _START_GAME_START_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./START-GAME/START-page */ \"./src/components/START-GAME/START-page.ts\");\n\r\n\r\n\r\n\r\nclass Game {\r\n    constructor() {\r\n        this.canvas = document.querySelector('canvas');\r\n        this.ctx = this.canvas.getContext('2d');\r\n        this.player = new _utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__.Player(this);\r\n        this.startPage = new _START_GAME_START_page__WEBPACK_IMPORTED_MODULE_3__.StartPage(this);\r\n        this.level1 = new _Level_1_level_1__WEBPACK_IMPORTED_MODULE_2__.Level1(this);\r\n        this.startPageOpened = true;\r\n        this.level1Opened = false;\r\n        this.logo = new _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_1__.Logo(this);\r\n        this.gitHubs = new _utils_sprites_static_static_sprite__WEBPACK_IMPORTED_MODULE_1__.GitHubs(this);\r\n        this.canvas.width = window.innerWidth;\r\n        this.canvas.height = window.innerHeight;\r\n        window.addEventListener('resize', () => {\r\n            this.canvas.width = window.innerWidth;\r\n            this.canvas.height = window.innerHeight;\r\n        });\r\n        this.startPage.addListener(this);\r\n        this.player = new _utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__.Player(this);\r\n    }\r\n    update() {\r\n        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);\r\n        if (this.startPageOpened)\r\n            this.startPage.update(this);\r\n        if (this.level1Opened) {\r\n            this.level1.draw();\r\n            this.level1.update(3000);\r\n        }\r\n        this.logo.draw();\r\n        this.gitHubs.draw();\r\n        if (!this.startPageOpened)\r\n            this.player.update();\r\n        if (_utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__.keys.right.pressed &&\r\n            this.player.position.x < window.innerWidth * 0.6) {\r\n            this.player.velocity.x = 5;\r\n        }\r\n        else if (_utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__.keys.left.pressed && this.player.position.x > 100) {\r\n            this.player.velocity.x = -5;\r\n        }\r\n        else {\r\n            this.player.velocity.x = 0;\r\n            if (_utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__.keys.right.pressed)\r\n                this.level1.platforms.forEach((el) => {\r\n                    el.position.x -= 5;\r\n                });\r\n            else if (_utils_sprites_moving_characters_player_player__WEBPACK_IMPORTED_MODULE_0__.keys.left.pressed)\r\n                this.level1.platforms.forEach((el) => {\r\n                    el.position.x += 5;\r\n                });\r\n        }\r\n        this.level1.platforms.forEach((el) => {\r\n            if (this.player.position.y + this.player.height <=\r\n                el.position.y &&\r\n                this.player.position.y + this.player.height + this.player.velocity.y >=\r\n                    el.position.y &&\r\n                this.player.position.x + this.player.width >=\r\n                    el.position.x &&\r\n                this.player.position.x <=\r\n                    el.position.x + el.sizeFinal.x)\r\n                this.player.velocity.y = 0;\r\n        });\r\n    }\r\n}\r\nconst game = new Game();\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/components/game-canvas.ts?");
 
 /***/ }),
 
@@ -236,7 +276,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GroundEnemy\": () => (/* binding */ GroundEnemy),\n/* harmony export */   \"Spider\": () => (/* binding */ Spider),\n/* harmony export */   \"Worm\": () => (/* binding */ Worm)\n/* harmony export */ });\n/* harmony import */ var _Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Enemy */ \"./src/utils/sprites/moving/characters/enemies/Enemy.ts\");\n\r\nclass GroundEnemy extends _Enemy__WEBPACK_IMPORTED_MODULE_0__.Enemy {\r\n    update(deltaTime) {\r\n        super.update(deltaTime);\r\n        this.position.x += this.velocityX;\r\n        this.position.y += this.velocityY;\r\n        this.draw();\r\n    }\r\n}\r\nclass Worm extends GroundEnemy {\r\n    constructor(game, sizeFinal = { x: 261 * 0.6, y: 171 * 0.6 }, position = {\r\n        x: game.canvas.width,\r\n        y: game.canvas.height * 0.8 - sizeFinal.y, //  доработать\r\n    }, spriteSize = { x: 229, y: 171 }, path = '../../../../../../assets/enemy-worm.png', frames = { x: 0, y: 0 }, maxFrame = 5, velocityX = -(Math.random() * 2 + 2), velocityY = 0) {\r\n        super(game, position, sizeFinal, spriteSize, path, frames, maxFrame, velocityX, velocityY);\r\n    }\r\n}\r\nclass Spider extends GroundEnemy {\r\n    constructor(game, distanceMoving, position = {\r\n        x: Math.random() * game.canvas.width,\r\n        y: 0,\r\n    }, sizeFinal = { x: 310 * 0.7, y: 175 * 0.7 }, spriteSize = { x: 310, y: 175 }, path = '../../../../../../assets/enemy_spider.png', frames = { x: 0, y: 0 }, maxFrame = 5, velocityX = 0, velocityY = Math.random() * 2 + 2) {\r\n        super(game, position, sizeFinal, spriteSize, path, frames, maxFrame, velocityX, velocityY);\r\n        this.distanceMoving = distanceMoving;\r\n    }\r\n    draw() {\r\n        this.ctx.beginPath();\r\n        this.ctx.moveTo(this.position.x + this.sizeFinal.x / 2, 0);\r\n        this.ctx.lineTo(this.position.x + this.sizeFinal.x / 2, this.position.y);\r\n        this.ctx.stroke();\r\n        super.draw();\r\n    }\r\n    update(deltaTime) {\r\n        super.update(deltaTime);\r\n        if (this.position.y > this.distanceMoving)\r\n            this.velocityY *= -1;\r\n        console.log(this.position.y);\r\n        this.draw();\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/utils/sprites/moving/characters/enemies/GroundEnemy.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GroundEnemy\": () => (/* binding */ GroundEnemy),\n/* harmony export */   \"Spider\": () => (/* binding */ Spider),\n/* harmony export */   \"Worm\": () => (/* binding */ Worm)\n/* harmony export */ });\n/* harmony import */ var _Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Enemy */ \"./src/utils/sprites/moving/characters/enemies/Enemy.ts\");\n\r\nclass GroundEnemy extends _Enemy__WEBPACK_IMPORTED_MODULE_0__.Enemy {\r\n    update(deltaTime) {\r\n        super.update(deltaTime);\r\n        this.position.x += this.velocityX;\r\n        this.position.y += this.velocityY;\r\n        this.draw();\r\n    }\r\n}\r\nclass Worm extends GroundEnemy {\r\n    constructor(game, sizeFinal = { x: 261 * 0.6, y: 171 * 0.6 }, position = {\r\n        x: game.canvas.width,\r\n        y: game.canvas.height * 0.8 - sizeFinal.y, //  доработать\r\n    }, spriteSize = { x: 229, y: 171 }, path = '../../../../../../assets/enemy-worm.png', frames = { x: 0, y: 0 }, maxFrame = 5, velocityX = -(Math.random() * 2 + 2), velocityY = 0) {\r\n        super(game, position, sizeFinal, spriteSize, path, frames, maxFrame, velocityX, velocityY);\r\n    }\r\n}\r\nclass Spider extends GroundEnemy {\r\n    constructor(game, distanceMoving, position = {\r\n        x: Math.random() * game.canvas.width,\r\n        y: 0,\r\n    }, sizeFinal = { x: 310 * 0.7, y: 175 * 0.7 }, spriteSize = { x: 310, y: 175 }, path = '../../../../../../assets/enemy_spider.png', frames = { x: 0, y: 0 }, maxFrame = 5, velocityX = 0, velocityY = Math.random() * 2 + 2) {\r\n        super(game, position, sizeFinal, spriteSize, path, frames, maxFrame, velocityX, velocityY);\r\n        this.distanceMoving = distanceMoving;\r\n    }\r\n    draw() {\r\n        this.ctx.beginPath();\r\n        this.ctx.moveTo(this.position.x + this.sizeFinal.x / 2, 0);\r\n        this.ctx.lineTo(this.position.x + this.sizeFinal.x / 2, this.position.y);\r\n        this.ctx.stroke();\r\n        super.draw();\r\n    }\r\n    update(deltaTime) {\r\n        super.update(deltaTime);\r\n        if (this.position.y > this.distanceMoving)\r\n            this.velocityY *= -1;\r\n        this.draw();\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/utils/sprites/moving/characters/enemies/GroundEnemy.ts?");
+
+/***/ }),
+
+/***/ "./src/utils/sprites/moving/characters/player/player.ts":
+/*!**************************************************************!*\
+  !*** ./src/utils/sprites/moving/characters/player/player.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Player\": () => (/* binding */ Player),\n/* harmony export */   \"keys\": () => (/* binding */ keys)\n/* harmony export */ });\n/* harmony import */ var _components_game_canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../components/game-canvas */ \"./src/components/game-canvas.ts\");\n\r\nconst gravity = 0.5;\r\nclass Player {\r\n    constructor(game) {\r\n        this.position = {\r\n            x: 100,\r\n            y: game.canvas.height * 0.7,\r\n        };\r\n        this.velocity = {\r\n            x: 0,\r\n            y: 0,\r\n        };\r\n        this.game = game;\r\n        this.width = 100;\r\n        this.height = 100;\r\n    }\r\n    draw() {\r\n        this.game.ctx.fillRect(this.position.x, this.position.y, this.width, this.height);\r\n    }\r\n    update() {\r\n        this.draw();\r\n        this.position.y += this.velocity.y;\r\n        this.position.x += this.velocity.x;\r\n        this.position.y + this.height + this.velocity.y <= this.game.canvas.height\r\n            ? (this.velocity.y += gravity)\r\n            : (this.velocity.y = 0);\r\n    }\r\n}\r\n// keys\r\nconst keys = {\r\n    right: {\r\n        pressed: false,\r\n    },\r\n    left: {\r\n        pressed: false,\r\n    },\r\n};\r\nwindow.addEventListener('keydown', (KeyboardEvent) => {\r\n    console.log(KeyboardEvent.code);\r\n    switch (KeyboardEvent.code) {\r\n        case 'KeyA':\r\n            keys.left.pressed = true;\r\n            break;\r\n        case 'KeyS':\r\n            _components_game_canvas__WEBPACK_IMPORTED_MODULE_0__.game.player.velocity.y = 30;\r\n            break;\r\n        case 'KeyD':\r\n            keys.right.pressed = true;\r\n            break;\r\n        case 'KeyW':\r\n            _components_game_canvas__WEBPACK_IMPORTED_MODULE_0__.game.player.velocity.y = -30;\r\n            break;\r\n    }\r\n});\r\nwindow.addEventListener('keyup', (KeyboardEvent) => {\r\n    console.log(KeyboardEvent.code);\r\n    switch (KeyboardEvent.code) {\r\n        case 'KeyA':\r\n            keys.left.pressed = false;\r\n            break;\r\n        case 'KeyS':\r\n            _components_game_canvas__WEBPACK_IMPORTED_MODULE_0__.game.player.velocity.y = 0;\r\n            break;\r\n        case 'KeyD':\r\n            keys.right.pressed = false;\r\n            break;\r\n        case 'KeyW':\r\n            _components_game_canvas__WEBPACK_IMPORTED_MODULE_0__.game.player.velocity.y = 0;\r\n            break;\r\n    }\r\n});\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/utils/sprites/moving/characters/player/player.ts?");
 
 /***/ }),
 
@@ -266,7 +316,77 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GitHubs\": () => (/* binding */ GitHubs),\n/* harmony export */   \"Logo\": () => (/* binding */ Logo),\n/* harmony export */   \"Platform\": () => (/* binding */ Platform),\n/* harmony export */   \"StaticSprite\": () => (/* binding */ StaticSprite)\n/* harmony export */ });\n/* harmony import */ var _Sprite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Sprite */ \"./src/utils/sprites/Sprite.ts\");\n\r\nclass StaticSprite extends _Sprite__WEBPACK_IMPORTED_MODULE_0__.Sprite {\r\n    constructor(game, position, sizeFinal, rotateAngle, frames, spriteSize, path) {\r\n        super(game, position, sizeFinal, spriteSize, path, frames);\r\n        this.rotateAngle = rotateAngle;\r\n    }\r\n    render(game) {\r\n        game.ctx.save();\r\n        game.ctx.translate(0, 0);\r\n        game.ctx.rotate((this.rotateAngle * Math.PI) / 180);\r\n        this.draw();\r\n        game.ctx.restore();\r\n    }\r\n}\r\nclass Platform extends StaticSprite {\r\n    constructor(game, position, sizeFinal, rotateAngle, frames = { x: 0, y: 0 }, spriteSize = { x: 578, y: 111 }, path = '../../../../assets/platform.png') {\r\n        super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);\r\n    }\r\n}\r\nclass Logo extends StaticSprite {\r\n    constructor(game, position = { x: 5, y: 5 }, sizeFinal = { x: 200, y: 100 }, rotateAngle = 60, frames = { x: 0, y: 0 }, spriteSize = { x: 4000, y: 2000 }, path = '../../../../assets/logo_rs.png') {\r\n        super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);\r\n    }\r\n}\r\nclass GitHubs extends StaticSprite {\r\n    constructor(game, sizeFinal = { x: 150, y: 55 }, position = {\r\n        x: window.innerWidth - sizeFinal.x * 1.1,\r\n        y: window.innerHeight - sizeFinal.y * 1.1,\r\n    }, rotateAngle = 0, frames = { x: 0, y: 0 }, spriteSize = { x: 1001, y: 401 }, path = '../../../../assets/gitHubs.png') {\r\n        super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/utils/sprites/static/static-sprite.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"GitHubs\": () => (/* binding */ GitHubs),\n/* harmony export */   \"Logo\": () => (/* binding */ Logo),\n/* harmony export */   \"Platform\": () => (/* binding */ Platform),\n/* harmony export */   \"StaticSprite\": () => (/* binding */ StaticSprite)\n/* harmony export */ });\n/* harmony import */ var _Sprite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Sprite */ \"./src/utils/sprites/Sprite.ts\");\n\r\nclass StaticSprite extends _Sprite__WEBPACK_IMPORTED_MODULE_0__.Sprite {\r\n    constructor(game, position, sizeFinal, rotateAngle, frames, spriteSize, path) {\r\n        super(game, position, sizeFinal, spriteSize, path, frames);\r\n        this.rotateAngle = rotateAngle;\r\n    }\r\n    render(game) {\r\n        this.draw();\r\n        game.ctx.save();\r\n        game.ctx.translate(0, 0);\r\n        game.ctx.rotate((this.rotateAngle * Math.PI) / 180);\r\n        this.draw();\r\n        game.ctx.restore();\r\n    }\r\n}\r\nclass Platform extends StaticSprite {\r\n    constructor(game, position, sizeFinal, rotateAngle, frames = { x: 0, y: 0 }, spriteSize = { x: 578, y: 111 }, path = '../../../../assets/platform.png') {\r\n        super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);\r\n    }\r\n}\r\nclass Logo extends StaticSprite {\r\n    constructor(game, position = { x: 5, y: 5 }, sizeFinal = { x: 200, y: 100 }, rotateAngle = 60, frames = { x: 0, y: 0 }, spriteSize = { x: 4000, y: 2000 }, path = '../../../../assets/logo_rs.png') {\r\n        super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);\r\n    }\r\n}\r\nclass GitHubs extends StaticSprite {\r\n    constructor(game, sizeFinal = { x: 150, y: 55 }, position = {\r\n        x: window.innerWidth - sizeFinal.x * 1.1,\r\n        y: window.innerHeight - sizeFinal.y * 1.1,\r\n    }, rotateAngle = 0, frames = { x: 0, y: 0 }, spriteSize = { x: 1001, y: 401 }, path = '../../../../assets/gitHubs.png') {\r\n        super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack://platformer-2d/./src/utils/sprites/static/static-sprite.ts?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-1.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-1.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"c381a2d10a978eea841d.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-1.png?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-2.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-2.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"d02c406b2be9783f06ca.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-2.png?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-3.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-3.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"03fe2e198ed39ed624bf.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-3.png?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-4.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-4.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"7d6d45bd09761bcc69d4.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-4.png?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-5.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-5.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"0b741ccf0f4c22fd1e13.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-5.png?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-6.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-6.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"92c5b7f0f2e01522bae0.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-6.png?");
+
+/***/ }),
+
+/***/ "./assets/backgrounds/1/layer-7.png":
+/*!******************************************!*\
+  !*** ./assets/backgrounds/1/layer-7.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"30a4d2b62c43327cac41.png\";\n\n//# sourceURL=webpack://platformer-2d/./assets/backgrounds/1/layer-7.png?");
 
 /***/ })
 
@@ -321,6 +441,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -335,6 +467,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
