@@ -110,8 +110,7 @@
     "src/utils/sprites/moving/characters/enemies/Enemy.ts",
     "src/utils/sprites/moving/characters/enemies/GroundEnemy.ts",
     "./src/components/START-GAME/styleNameGame.ts",
-    "./src/components/START-GAME/millingCuttersSTART.ts",
-    "src/utils/common-classes/GenetationEnemies.ts"
+    "./src/components/START-GAME/millingCuttersSTART.ts"
   ],
   "include": ["src", "index.d.ts"]
 }
