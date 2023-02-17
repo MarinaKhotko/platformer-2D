@@ -22,7 +22,7 @@ export default class Game {
     });
     this.startPage.addListener(this);
   }
-
+  
   public update(): void {
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
