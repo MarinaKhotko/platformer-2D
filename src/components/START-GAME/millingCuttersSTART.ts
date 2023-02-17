@@ -3,7 +3,7 @@ import type Game from '../game-canvas';
 
 export function millingCuttersSTART(game: Game): MillingCutter[] {
   const millingCuttersARR = [];
-  const sizeBig = { x: 1000, y: 1000 };
+  const sizeBig = { x: 700, y: 700 };
   const sizeSmall = { x: 300, y: 300 };
 
   const ARRpositions = [

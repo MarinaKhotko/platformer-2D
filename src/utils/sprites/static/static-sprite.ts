@@ -44,8 +44,8 @@ export class Platform extends StaticSprite {
 export class Logo extends StaticSprite {
   public constructor(
     game: Game,
-    position = { x: 10, y: 10 },
-    sizeFinal = { x: 400, y: 200 },
+    position = { x: 5, y: 5 },
+    sizeFinal = { x: 200, y: 100 },
     rotateAngle = 60,
     frames = { x: 0, y: 0 },
     spriteSize = { x: 4000, y: 2000 },
@@ -58,8 +58,11 @@ export class Logo extends StaticSprite {
 export class GitHubs extends StaticSprite {
   public constructor(
     game: Game,
-    position = { x: window.innerWidth * 0.9, y: window.innerHeight * 0.9 },
-    sizeFinal = { x: 250, y: 100 },
+    sizeFinal = { x: 150, y: 55 },
+    position = {
+      x: window.innerWidth - sizeFinal.x * 1.1,
+      y: window.innerHeight - sizeFinal.y * 1.1,
+    },
     rotateAngle = 0,
     frames = { x: 0, y: 0 },
     spriteSize = { x: 1001, y: 401 },
