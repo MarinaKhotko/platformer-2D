@@ -53,10 +53,10 @@ export const keys = {
   left: {
     pressed: false,
   },
+  speed: 0
 };
 
 window.addEventListener('keydown', (KeyboardEvent) => {
-  console.log(KeyboardEvent.code);
   switch (KeyboardEvent.code) {
     case 'KeyA':
       keys.left.pressed = true;
@@ -74,16 +74,17 @@ window.addEventListener('keydown', (KeyboardEvent) => {
 });
 
 window.addEventListener('keyup', (KeyboardEvent) => {
-  console.log(KeyboardEvent.code);
   switch (KeyboardEvent.code) {
     case 'KeyA':
       keys.left.pressed = false;
+      keys.speed = 0
       break;
     case 'KeyS':
       game.player.velocity.y = 0;
       break;
     case 'KeyD':
       keys.right.pressed = false;
+      keys.speed = 0
       break;
     case 'KeyW':
       game.player.velocity.y = 0;

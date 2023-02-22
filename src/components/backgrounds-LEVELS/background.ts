@@ -1,29 +1,43 @@
 import type Game from '../game-canvas';
-import { AllLayers } from './AllLayers';
-import { layersL1, speedModifiersL1 } from './data/img-background-1';
+import { Layer } from './Layer';
 
 export const gameSpeed: number = 5;
 
 export class BackgroundParallax {
   game: Game;
-  allLayers: AllLayers;
+  layersARR: Layer[] = [];
+  speedModifiers: number[];
+  layers: HTMLImageElement[];
 
-  constructor(game: Game) {
+  constructor(
+    game: Game,
+    layers: HTMLImageElement[],
+    speedModifiers: number[],
+  ) {
     this.game = game;
-    this.allLayers = new AllLayers(this.game, layersL1, speedModifiersL1);
+    this.layers = layers;
+    this.speedModifiers = speedModifiers;
+
+    for (let i = 0; i < this.layers.length; i++) {
+      this.layersARR[i] = new Layer(
+        this.game,
+        this.layers[i],
+        this.speedModifiers[i],
+      );
+    }
   }
 
-  animateParallax(): void {
+  animate(): void {
     this.game.ctx.clearRect(
       0,
       0,
       this.game.canvas.width,
       this.game.canvas.height,
     );
-
-    this.allLayers.getlayers().forEach((obj) => {
+    
+    this.layersARR.forEach((obj) => {
       obj.update();
-      // obj.scroll();
+      obj.draw();
     });
   }
 }
