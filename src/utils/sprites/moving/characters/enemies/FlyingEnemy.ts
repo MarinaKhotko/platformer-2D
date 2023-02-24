@@ -1,4 +1,5 @@
 import type Game from '../../../../../components/game-canvas';
+import type { Level } from '../../../../../components/Levels/class-level';
 import { Enemy } from './Enemy';
 
 export class FlyingEnemy extends Enemy {
@@ -12,6 +13,7 @@ export class FlyingEnemy extends Enemy {
 export class Raven extends FlyingEnemy {
   constructor(
     game: Game,
+    level: Level,
     position = {
       x: game.canvas.width,
       y: Math.random() * game.canvas.height * 0.4,
@@ -26,6 +28,7 @@ export class Raven extends FlyingEnemy {
   ) {
     super(
       game,
+      level,
       position,
       sizeFinal,
       spriteSize,
@@ -44,6 +47,7 @@ export class Ghost extends FlyingEnemy {
 
   constructor(
     game: Game,
+    level: Level,
     position = {
       x: game.canvas.width,
       y: Math.random() * game.canvas.height * 0.4,
@@ -58,6 +62,7 @@ export class Ghost extends FlyingEnemy {
   ) {
     super(
       game,
+      level,
       position,
       sizeFinal,
       spriteSize,

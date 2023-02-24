@@ -111,7 +111,9 @@
     "src/utils/sprites/moving/characters/enemies/GroundEnemy.ts",
     "./src/components/START-GAME/styleNameGame.ts",
     "./src/components/START-GAME/millingCuttersSTART.ts",
-    "src/components/backgrounds-LEVELS/Layer.ts"
+    "src/components/backgrounds-LEVELS/Layer.ts",
+    "src/components/Levels/class-AllLevels.ts",
+    "src/components/Levels/generate-levels.ts"
   ],
   "include": ["src", "index.d.ts"]
 }

@@ -1,4 +1,5 @@
 import type Game from '../../../../../components/game-canvas';
+import type { Level } from '../../../../../components/Levels/class-level';
 import { Enemy } from './Enemy';
 
 export class GroundEnemy extends Enemy {
@@ -13,6 +14,7 @@ export class GroundEnemy extends Enemy {
 export class Worm extends GroundEnemy {
   constructor(
     game: Game,
+    level: Level,
     sizeFinal = { x: 261 * 0.6, y: 171 * 0.6 },
     position = {
       x: game.canvas.width,
@@ -27,6 +29,7 @@ export class Worm extends GroundEnemy {
   ) {
     super(
       game,
+      level,
       position,
       sizeFinal,
       spriteSize,
@@ -44,6 +47,7 @@ export class Spider extends GroundEnemy {
 
   constructor(
     game: Game,
+    level: Level,
     distanceMoving: number,
     position = {
       x: Math.random() * game.canvas.width,
@@ -59,6 +63,7 @@ export class Spider extends GroundEnemy {
   ) {
     super(
       game,
+      level,
       position,
       sizeFinal,
       spriteSize,

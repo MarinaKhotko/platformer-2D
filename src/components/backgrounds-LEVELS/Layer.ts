@@ -12,7 +12,6 @@ export class Layer {
   x2: number;
   speed: number;
   gameSpeed: number;
-  // x3: number;
   count: number;
 
   public constructor(
@@ -29,7 +28,6 @@ export class Layer {
     this.x = 0;
     this.y = 0;
     this.x2 = this.width;
-    // this.x3 = -this.width;
     this.speed = this.gameSpeed * this.speedModifier;
     this.count = 0;
   }
@@ -37,8 +35,6 @@ export class Layer {
   public update(): void {
     this.gameSpeed = keys.speed;
     this.speed = this.gameSpeed * this.speedModifier;
-
-    // if (this.speed > 0) {
     if (this.x <= -this.width) {
       this.x = this.width + this.x2 - this.speed;
       this.count++;
@@ -47,29 +43,8 @@ export class Layer {
       this.x2 = this.width + this.x - this.speed;
       this.count++;
     }
-    console.log(this.count);
     this.x = Math.floor(this.x - this.speed);
     this.x2 = Math.floor(this.x2 - this.speed);
-
-    // (this.x < this.x2) ?
-    // this.x3 = this.x - this.width
-    // :  this.x3 = this.x2 - this.width
-    // }
-    // else if (this.speed < 0){
-    //   if (this.x <= -this.width && this.x < this.width) {
-    //     this.x = this.width + this.x2 - this.speed;
-    //   }
-    //   if (this.x2 <= -this.width && this.x2 < this.width) {
-    //     this.x2 = this.width + this.x - this.speed;
-    //   }
-    //   this.x = Math.floor(this.x - this.speed);
-    //   this.x2 = Math.floor(this.x2 - this.speed);
-
-    //   (this.x > this.x3) ?
-    //   this.x3 = this.x - this.width
-    //   :  this.x3 = this.x2 - this.width
-    //   console.log(this.x, this.x2, this.x3)
-    // }
   }
 
   public draw(): void {

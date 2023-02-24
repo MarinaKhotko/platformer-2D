@@ -72,3 +72,32 @@ export class GitHubs extends StaticSprite {
     super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);
   }
 }
+
+export class Shining extends StaticSprite {
+  protected fps = 30;
+  protected frameTimer = 0;
+  protected frameInterval = 1000 / this.fps;
+  protected currantFrame: number = 1;
+  protected maxFrame = 3;
+  
+  public constructor(
+    game: Game,
+    position: Vector,
+    sizeFinal = { x: 182 * 0.4, y: 206 *0.4 },
+    rotateAngle = 0,
+    frames = { x: 0, y: 2 },
+    spriteSize = { x: 182, y: 206 },
+    path: string = '../../../../assets/shining.png',
+  ) {
+    super(game, position, sizeFinal, rotateAngle, frames, spriteSize, path);
+  }
+
+  update(deltaTime: number): void { 
+    if (this.frameTimer > this.frameInterval) {
+      this.frameTimer = 0;
+      this.frames.x < this.maxFrame ? this.frames.x++ : (this.frames.x = 0);
+    } else {
+      this.frameTimer += deltaTime;
+    }
+  }
+}

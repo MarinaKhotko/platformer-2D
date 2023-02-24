@@ -44,8 +44,6 @@ export class Player {
   }
 }
 
-// keys
-
 export const keys = {
   right: {
     pressed: false,
@@ -91,3 +89,4 @@ window.addEventListener('keyup', (KeyboardEvent) => {
       break;
   }
 });
+
