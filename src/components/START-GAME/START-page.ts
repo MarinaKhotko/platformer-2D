@@ -9,6 +9,7 @@ import { Sprite } from '../../utils/sprites/Sprite';
 export class StartPage {
   backgroundStart: Sprite;
   startGameButton: Button;
+  optionsButton: Button;
   platform1: Platform;
   millingCutters: MillingCutter[];
 
@@ -26,6 +27,15 @@ export class StartPage {
       { x: 220, y: 80 },
       60,
       'PLAY',
+      'white',
+      'black',
+    );
+
+    this.optionsButton = new Button(
+      { x: window.innerWidth * 0.15, y: window.innerHeight * 0.6 },
+      { x: 250, y: 80 },
+      60,
+      'OPTIONS',
       'white',
       'black',
     );
@@ -63,5 +73,6 @@ export class StartPage {
     this.platform1.render(game);
     styleNameGame(game);
     this.startGameButton.draw(game);
+    this.optionsButton.draw(game)
   }
 }
