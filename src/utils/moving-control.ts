@@ -6,6 +6,25 @@ export const stopRight = window.innerWidth * 0.4;
 export const stopLeft = window.innerWidth * 0.3;
 
 export const movingControl = (game: Game, level: Level): void => {
+
+  level.allShining.forEach((el) => {
+    // console.log(game.player.position.x + game.player.sizeFinal.x >= el.position.x)
+    // console.log(game.player.position.x + game.player.sizeFinal.x <= el.position.x + el.sizeFinal.x)
+    // console.log(game.player.position.y >= el.position.y + el.sizeFinal.y)
+    // console.log(game.player.position.y <= el.position.y)
+
+    console.log(game.player.position.x + game.player.sizeFinal.x)
+    console.log(el.position.x + el.sizeFinal.x)
+    if (game.player.position.x + game.player.sizeFinal.x >= el.position.x && 
+      game.player.position.x + game.player.sizeFinal.x <= el.position.x + el.sizeFinal.x && 
+      game.player.position.y >= el.position.y + el.sizeFinal.y&&  
+      game.player.position.y <= el.position.y ){
+
+
+    }
+  });
+
+
   if (keys.right.pressed && game.player.position.x <= stopRight) {
     game.player.velocityX = game.gameSpeed;
     level.distance += game.gameSpeed;
@@ -91,3 +110,5 @@ export const movingControl = (game: Game, level: Level): void => {
     //   break
   }
 };
+
+

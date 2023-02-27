@@ -1,5 +1,5 @@
 import { movingControl } from '../utils/moving-control';
-import { Player } from '../utils/sprites/moving/characters/player/player';
+import { Player, PlayerDog, PlayerStandart } from '../utils/sprites/moving/characters/player/player';
 import { GitHubs, Logo } from '../utils/sprites/static/static-sprite';
 import { AllLevels } from './Levels/class-AllLevels';
 import { StartPage } from './START-GAME/START-page';
@@ -7,7 +7,6 @@ import { StartPage } from './START-GAME/START-page';
 export default class Game {
   public canvas = document.querySelector('canvas') as HTMLCanvasElement;
   public ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
-  public player = new Player(this);
   startPage = new StartPage(this);
   startPageOpened = true;
   logo = new Logo(this);
@@ -16,6 +15,7 @@ export default class Game {
   allLevels: AllLevels;
   pause = false
   count = 0
+  player: PlayerStandart | PlayerDog;
 
   public constructor() {
     this.canvas.width = window.innerWidth;
@@ -26,7 +26,7 @@ export default class Game {
     });
     this.startPage.addListener(this);
     this.allLevels = new AllLevels(this);
-    this.player = new Player(this);
+    this.player = new PlayerStandart(this);
   }
 
     public update(): void {
