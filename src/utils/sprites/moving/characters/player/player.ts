@@ -43,7 +43,7 @@ export class Player extends MovingSprite {
     this.position.y += this.velocityY;
 
     this.position.y + this.sizeFinal.y + this.velocityY <=
-    this.game.canvas.height
+    this.game.canvas.height - 80
       ? (this.velocityY += gravity)
       : (this.velocityY = 0);
 

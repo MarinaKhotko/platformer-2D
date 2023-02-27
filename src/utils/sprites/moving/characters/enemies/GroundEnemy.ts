@@ -15,10 +15,10 @@ export class Worm extends GroundEnemy {
   constructor(
     game: Game,
     level: Level,
-    sizeFinal = { x: 261 * 0.6, y: 171 * 0.6 },
+    sizeFinal = { x: 261 * 0.5, y: 171 * 0.5 },
     position = {
       x: game.canvas.width,
-      y: game.canvas.height * 0.8 - sizeFinal.y, //  доработать
+      y: game.canvas.height - sizeFinal.y -80, //  доработать
     },
     spriteSize = { x: 229, y: 171 },
     path = '../../../../../../assets/enemy-worm.png',
@@ -53,7 +53,7 @@ export class Spider extends GroundEnemy {
       x: Math.random() * game.canvas.width,
       y: 0,
     },
-    sizeFinal = { x: 310 * 0.7, y: 175 * 0.7 },
+    sizeFinal = { x: 310 * 0.4, y: 175 * 0.4 },
     spriteSize = { x: 310, y: 175 },
     path = '../../../../../../assets/enemy_spider.png',
     frames = { x: 0, y: 0 },
