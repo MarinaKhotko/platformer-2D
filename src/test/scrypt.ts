@@ -42,7 +42,7 @@ window.addEventListener('load', function(){
         height: number;
         x: number;
         y: number;
-        image: HTMLElement | null;
+        image: CanvasImageSource;
         frameX: number;
         maxFrame: number;
         fps: number;
@@ -51,7 +51,7 @@ window.addEventListener('load', function(){
         speed: number;
         vy: number;
         frameY: number;
-        weight: number;
+        weight!: number;
         constructor(gameWidth: number, gameHeight: number) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
@@ -88,7 +88,7 @@ window.addEventListener('load', function(){
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height,
             this.width, this.height, this.x, this.y, this.width, this.height);
         }
-        update(input, deltaTime: number, enemies: any[]) {
+        update(input, deltaTime: number, enemies) {
             // detection collision
             enemies.forEach((enemy: { x: number; width: number; y: number; height: number; }) => {
                 const dx = (enemy.x + enemy.width/2) - (this.x + this.width/2);
@@ -143,7 +143,7 @@ window.addEventListener('load', function(){
     class Background {
         gameWidth: number;
         gameHeight: number;
-        image: HTMLElement | null;
+        image: CanvasImageSource;
         x: number;
         y: number;
         height: number;
@@ -176,7 +176,7 @@ window.addEventListener('load', function(){
         gameHeight: number;
         width: number;
         height: number;
-        image: HTMLElement | null;
+        image: CanvasImageSource;
         x: number;
         y: number;
         frameX: number;
@@ -202,7 +202,7 @@ window.addEventListener('load', function(){
             this.speed = 8;
             this.markedForDeletion = false;
         }
-        draw(context: { drawImage: (arg0: HTMLElement | null, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: number, arg7: number, arg8: number) => void; }){
+        draw(context: { drawImage: (arg0: CanvasImageSource, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: number, arg7: number, arg8: number) => void; }){
             /* marker collisions
             context.strokeStyle = 'white';
             context.strokeRect(this.x, this.y, this.width, this.height);

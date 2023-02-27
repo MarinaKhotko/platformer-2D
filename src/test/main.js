@@ -46,7 +46,7 @@ window.addEventListener('load', function(){
             this.image = document.getElementById('playerImage');
             this.frameX = 0;
             this.maxFrame = 8;
-            this.frameY = 0;
+        //    this.frameY = 0;
             this.fps = 20;
             this.frameTimer = 0;
             this.frameInterval = 1000/this.fps;
@@ -69,11 +69,13 @@ window.addEventListener('load', function(){
             //context.fillStyle = 'white';
             //context.fillRect(this.x, this.y, this.width, this.height);
             */ //end marker collisions
+            console.log(typeof(this.image), '=', this.image);
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height,
             this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(input, deltaTime, enemies) {
             // detection collision
+            console.log(typeof(input), '=', input);
             enemies.forEach(enemy => {
                 const dx = (enemy.x + enemy.width/2) - (this.x + this.width/2);
                 const dy = (enemy.y + enemy.height/2) - (this.y + this.height/2);
