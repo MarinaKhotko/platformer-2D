@@ -1,4 +1,5 @@
 import type Game from '../../../../../components/game-canvas';
+import type { Level } from '../../../../../components/Levels/class-level';
 import { Enemy } from './Enemy';
 
 export class GroundEnemy extends Enemy {
@@ -13,10 +14,11 @@ export class GroundEnemy extends Enemy {
 export class Worm extends GroundEnemy {
   constructor(
     game: Game,
-    sizeFinal = { x: 261 * 0.6, y: 171 * 0.6 },
+    level: Level,
+    sizeFinal = { x: 261 * 0.5, y: 171 * 0.5 },
     position = {
       x: game.canvas.width,
-      y: game.canvas.height * 0.8 - sizeFinal.y, //  доработать
+      y: game.canvas.height - sizeFinal.y -80, //  доработать
     },
     spriteSize = { x: 229, y: 171 },
     path = '../../../../../../assets/enemy-worm.png',
@@ -27,6 +29,7 @@ export class Worm extends GroundEnemy {
   ) {
     super(
       game,
+      level,
       position,
       sizeFinal,
       spriteSize,
@@ -44,12 +47,13 @@ export class Spider extends GroundEnemy {
 
   constructor(
     game: Game,
+    level: Level,
     distanceMoving: number,
     position = {
       x: Math.random() * game.canvas.width,
       y: 0,
     },
-    sizeFinal = { x: 310 * 0.7, y: 175 * 0.7 },
+    sizeFinal = { x: 310 * 0.4, y: 175 * 0.4 },
     spriteSize = { x: 310, y: 175 },
     path = '../../../../../../assets/enemy_spider.png',
     frames = { x: 0, y: 0 },
@@ -59,6 +63,7 @@ export class Spider extends GroundEnemy {
   ) {
     super(
       game,
+      level,
       position,
       sizeFinal,
       spriteSize,
@@ -83,8 +88,6 @@ export class Spider extends GroundEnemy {
     super.update(deltaTime);
 
     if (this.position.y > this.distanceMoving) this.velocityY *= -1;
-    console.log(this.position.y);
-
     this.draw();
   }
 }

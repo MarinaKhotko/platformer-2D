@@ -3,8 +3,8 @@ import type { Vector } from '../../../interfaces';
 import { Sprite } from '../../Sprite';
 
 export class MovingSprite extends Sprite {
-  protected velocityX: number;
-  protected velocityY: number;
+  velocityX: number;
+ velocityY: number;
 
   public constructor(
     game: Game,
