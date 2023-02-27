@@ -2,6 +2,7 @@ import { movingControl } from '../utils/moving-control';
 import { Player, PlayerDog, PlayerStandart } from '../utils/sprites/moving/characters/player/player';
 import { GitHubs, Logo } from '../utils/sprites/static/static-sprite';
 import { AllLevels } from './Levels/class-AllLevels';
+import { PausaPage } from './START-GAME/Pause-Page';
 import { StartPage } from './START-GAME/START-page';
 
 export default class Game {
@@ -14,8 +15,8 @@ export default class Game {
   gameSpeed = 5;
   allLevels: AllLevels;
   pause = false
-  count = 0
   player: PlayerStandart | PlayerDog;
+  pausePage = new PausaPage(this);
 
   public constructor() {
     this.canvas.width = window.innerWidth;
@@ -30,7 +31,7 @@ export default class Game {
   }
 
     public update(): void {
-      // if (!this.pause){
+      if (!this.pause){
     if (this.startPageOpened) this.startPage.update(this);
     this.allLevels.levels.forEach((el) => {
       if (el.opened) {
@@ -42,37 +43,17 @@ export default class Game {
     this.logo.draw();
     this.gitHubs.draw();
   }
-  // if (this.count === 0) setInterval(myCallback, 10000)
+  else{
+    game.ctx.save()
+    game.pausePage.update(this)
+    console.log(5)
+  }
+
+}
 }
 
-// }
+
 
 export const game = new Game();
 
 
-
-
-
-// function myCallback(): void{
-//   game.count = 1
-//   game.ctx.save()
-//   game.pause = true
-//   game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height)
-//   console.log(111)
-//   setInterval(myCallback2, 5000)
-// }
-
-// // export function pause (game: Game): void{
-// //   game.ctx.save()
-// //   game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height)
- 
-// //   setInterval(myCallback, 5000)
-// //  }
-
-// //  pause(game)
-
-// function myCallback2(): void{
-//   game.pause = false
-//   game.ctx.restore()
-
-// }

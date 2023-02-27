@@ -46,7 +46,7 @@ export class StartPage {
         event.pageX - (game.canvas.clientLeft + game.canvas.offsetLeft);
       const mouseY =
         event.pageY - (game.canvas.clientTop + game.canvas.offsetTop);
-      if (this.startGameButton.inBounds(mouseX, mouseY)) {
+      if (this.startGameButton.inBounds(mouseX, mouseY) ) {
         game.startPageOpened = false;
         game.allLevels.level1.opened = true
       }

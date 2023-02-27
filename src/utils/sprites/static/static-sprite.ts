@@ -79,6 +79,7 @@ export class Shining extends StaticSprite {
   protected frameInterval = 1000 / this.fps;
   protected currantFrame: number = 1;
   protected maxFrame = 3;
+  markedToDeletion = false
   
   public constructor(
     game: Game,
