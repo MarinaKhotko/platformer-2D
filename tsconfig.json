@@ -105,7 +105,7 @@
     "src/utils/sprites/moving/characters/enemies/FlyingEnemy.ts",
     "src/utils/sprites/Sprite.ts",
     "src/components/START-GAME/START-page.ts",
-    "src/utils/sprites/moving/characters/Character.ts",
+    "src/utils/sprites/moving/characters/MovingSprite.ts",
     "src/utils/sprites/moving/rotating/rotating-sprite.ts",
     "src/utils/sprites/moving/characters/enemies/Enemy.ts",
     "src/utils/sprites/moving/characters/enemies/GroundEnemy.ts",
@@ -113,7 +113,8 @@
     "./src/components/START-GAME/millingCuttersSTART.ts",
     "src/components/backgrounds-LEVELS/Layer.ts",
     "src/components/Levels/class-AllLevels.ts",
-    "src/components/Levels/generate-levels.ts"
+    "src/components/Levels/generate-levels.ts",
+    "src/utils/EventListeners.ts"
   ],
   "include": ["src", "index.d.ts"]
 }

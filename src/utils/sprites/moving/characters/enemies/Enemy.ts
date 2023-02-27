@@ -1,7 +1,7 @@
-import { MovingSprite } from '../Character';
+import { MovingSprite } from '../MovingSprite';
 import type { Vector } from '../../../../interfaces';
 import type Game from '../../../../../components/game-canvas';
-import { keys } from '../player/player';
+import { keys } from '../../../../EventListeners';
 import { stopLeft } from '../../../../moving-control';
 import type { Level } from '../../../../../components/Levels/class-level';
 

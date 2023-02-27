@@ -1,4 +1,4 @@
-import { keys } from '../../utils/sprites/moving/characters/player/player';
+import { keys } from '../../utils/EventListeners';
 import type Game from '../game-canvas';
 
 export class Layer {

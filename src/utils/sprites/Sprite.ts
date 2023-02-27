@@ -7,7 +7,7 @@ export class Sprite {
   protected spriteSize: Vector;
   protected image = new Image();
   protected ImgPath: string;
-  protected frames: Vector;
+  public frames: Vector;
   protected loaded: boolean;
   ctx: CanvasRenderingContext2D;
   game: Game;
