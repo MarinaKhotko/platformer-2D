@@ -50,7 +50,7 @@ export class StartPage {
       if (this.startGameButton.inBounds(mouseX, mouseY)) {
         game.startPageOpened = false;
         game.allLevels.level1.opened = true;
-        game.currentLevel = 'first';
+        game.currentLevel = '1';
         timer()
       }
       return game.startPageOpened;

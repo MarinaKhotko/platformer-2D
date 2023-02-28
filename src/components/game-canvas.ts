@@ -68,16 +68,3 @@ export default class Game {
 }
 
 export const game = new Game();
-
-// export const Scores = {
-//   '1': {
-//     score: 0,
-//     time: '00:00'
-//   },
-//   '2': {
-//     score: 0,
-//   },
-//   '3': {
-//     score: 0,
-//   },
-// };

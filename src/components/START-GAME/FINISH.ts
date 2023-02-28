@@ -13,11 +13,18 @@ export class Finish {
   addListener(game: Game, level: Level): void {
     window.addEventListener('keydown', (KeyboardEvent) => {
       if (KeyboardEvent.code === 'KeyX') {
-        game.allLevels.level1.opened = false
-        game.allLevels.level2.opened = true
         game.finish = false
-        // game.player.position = {      x: 100,
-        //     y: game.canvas.height * 0.7,}
+        game.allLevels.level1.opened = false
+        if (game.currentLevel === '1') {
+            game.allLevels.level2.opened = true
+            game.currentLevel = '2';
+        }
+        else if (game.currentLevel === '2') {
+            game.allLevels.level2.opened = false
+            game.allLevels.level3.opened = true
+            game.currentLevel = '3';
+        }
+
       }
     });
   }
