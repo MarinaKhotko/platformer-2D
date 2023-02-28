@@ -5,6 +5,7 @@ import { Platform } from '../../utils/sprites/static/static-sprite';
 import { styleNameGame } from './styleNameGame';
 import { millingCuttersSTART } from './millingCuttersSTART';
 import { Sprite } from '../../utils/sprites/Sprite';
+import { timer } from '../../utils/timer';
 
 export class StartPage {
   backgroundStart: Sprite;
@@ -46,11 +47,14 @@ export class StartPage {
         event.pageX - (game.canvas.clientLeft + game.canvas.offsetLeft);
       const mouseY =
         event.pageY - (game.canvas.clientTop + game.canvas.offsetTop);
-      if (this.startGameButton.inBounds(mouseX, mouseY) ) {
+      if (this.startGameButton.inBounds(mouseX, mouseY)) {
         game.startPageOpened = false;
-        game.allLevels.level1.opened = true
+        game.allLevels.level1.opened = true;
+        game.currentLevel = 'first';
+        timer()
       }
       return game.startPageOpened;
+      
     });
   }
 
@@ -65,3 +69,6 @@ export class StartPage {
     this.startGameButton.draw(game);
   }
 }
+
+
+
