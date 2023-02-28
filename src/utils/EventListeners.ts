@@ -1,4 +1,3 @@
-import { gameSpeed } from '../components/backgrounds-LEVELS/background';
 import { game } from '../components/game-canvas';
 
 export const keys = {

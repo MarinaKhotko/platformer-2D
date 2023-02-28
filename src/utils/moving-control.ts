@@ -6,6 +6,13 @@ export const stopRight = window.innerWidth * 0.4;
 export const stopLeft = window.innerWidth * 0.3;
 
 export const movingControl = (game: Game, level: Level): void => {
+  if (level.distance >= level.finish){
+      game.finish = true
+      game.finishPage.update(game, level)
+      game.finishPage.addListener(game, level)
+  }
+
+
   level.allShining.forEach((el) => {
     if (
       el.position.x <= game.player.position.x + game.player.sizeFinal.x &&
@@ -26,7 +33,10 @@ export const movingControl = (game: Game, level: Level): void => {
       el.position.y <= game.player.position.y + game.player.sizeFinal.y &&
       el.position.y + el.sizeFinal.y > game.player.position.y
     ) {
-      alert('Game Over')
+      console.log('Game Over')
+      game.gameOver = true
+      game.gameOverPage.update(game, level)
+      game.gameOverPage.addListener(game, level)
     }
   });
 

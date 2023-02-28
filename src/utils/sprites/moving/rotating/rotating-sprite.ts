@@ -32,7 +32,6 @@ export class RotatingSprite extends Sprite {
   update(): void {
     setInterval(() => {
       this.rotateAngle += this.rotationSpeed;
-      this.render();
     }, 500);
   }
 }

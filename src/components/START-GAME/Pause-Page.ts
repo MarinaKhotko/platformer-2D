@@ -1,8 +1,8 @@
-import { Button } from "../../utils/common-classes/classButton";
-import { MillingCutter } from "../../utils/sprites/moving/rotating/milling-cutter";
+
+import type { MillingCutter } from "../../utils/sprites/moving/rotating/milling-cutter";
 import { Sprite } from "../../utils/sprites/Sprite";
 import { Platform } from "../../utils/sprites/static/static-sprite";
-import Game from "../game-canvas";
+import type Game from "../game-canvas";
 import { millingCuttersSTART } from "./millingCuttersSTART";
 import { styleNameGame } from "./styleNameGame";
 

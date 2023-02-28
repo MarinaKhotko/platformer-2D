@@ -1,5 +1,5 @@
 import type Game from '../../../../../components/game-canvas';
-import { Vector } from '../../../../interfaces';
+import type { Vector } from '../../../../interfaces';
 import { MovingSprite } from '../MovingSprite';
 
 const gravity = 0.5;
@@ -35,8 +35,9 @@ export class Player extends MovingSprite {
       velocityY,
     )
     this.maxFrame = maxFrame;
-
   }
+
+  
   update(deltaTime: number): void {
 
     this.position.x += this.velocityX;

@@ -15,14 +15,18 @@ export class Level {
   allShining: Shining[];
   score: number;
   scoreShining: Shining;
+  finish: number;
+  finished = false
 
   constructor(
     game: Game,
+    finish: number,
     background: BackgroundParallax,
     platforms: Platform[],
     allShining: Shining[],
   ) {
     this.game = game;
+    this.finish = finish;
     this.generationEnemies = new GenetationEnemies(this);
     this.background = background;
     this.platforms = platforms;
@@ -51,6 +55,7 @@ export class Level {
     this.scoreShining.update(1);
     styleScore(this.game, this.score);
   }
+  
 }
 
 export function styleScore(game: Game, score: number): void {
