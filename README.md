@@ -18,13 +18,15 @@
 
 ### 4. Game control:
 
-   - w - jump
+   - Key w - jump
 
-   - a - move back
+   - Key a - move back
 
-   - d - move forward
+   - Key d - move forward
 
-   - s - squat
+   - Key s - squat
+   
+   - Key pause - pause game / resume game 
 
 ### 5. Deploy: 
    - https://thunderous-caramel-61e8de.netlify.app/
