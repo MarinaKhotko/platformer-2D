@@ -1,24 +1,30 @@
-   Game Dark Myster
+   # Game Dark Myster
 
-1. Install dependencies:
-   npm install
+### 1. Install dependencies:
+       - npm install
 
-2. Game description:
-   Dark Mystery is an addictive platform game in which the player faces various difficulties in order to find his true love. This game is
-   based on the true love between main hero and her queen who is lost in the dark world
+### 2. Game description:
+      - Dark Mystery is an addictive platform game in which the player faces various difficulties in order to find his true love. This game is
+        based on the true love between main hero and her queen who is lost in the dark world
 
-3. Main stack technology used: 
-   Javascript/Typescript/Canvas/SASS/Webpack/ESLint
+### 3. Main stack technology used:
 
-4. Game control:
+   - Javascript
+   - Typescript
+   - Canvas
+   - SASS
+   - Webpack
+   - ESLint
 
-   w - jump
+### 4. Game control:
 
-   a - move back
+   - w - jump
 
-   d - move forward
+   - a - move back
 
-   s - squat
+   - d - move forward
 
-5. Deploy: 
-   https://thunderous-caramel-61e8de.netlify.app/
+   - s - squat
+
+### 5. Deploy: 
+   - https://thunderous-caramel-61e8de.netlify.app/
